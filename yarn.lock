@@ -4604,7 +4604,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -4701,14 +4701,6 @@ react-native-elements@^0.19.1:
     lodash.times "^4.3.2"
     opencollective "^1.0.3"
     prop-types "^15.5.8"
-
-react-native-looped-carousel-improved@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-looped-carousel-improved/-/react-native-looped-carousel-improved-1.0.2.tgz#3cc0386e4bc96b2f16997d8bf1e61c5be4e3131f"
-  integrity sha512-ctFU9rv9Hy4SikhOuY/0s1X8gXI8JpAa/J0l7/VXdEX6NrnNXBDCsl4++lJIDLK0ckT+ZE4lDVn1pjaXnqb2bg==
-  dependencies:
-    lodash.isequal "^4.5.0"
-    prop-types "^15.5.10"
 
 react-native-looped-carousel@^0.1.13:
   version "0.1.13"
