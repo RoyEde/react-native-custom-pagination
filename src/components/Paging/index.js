@@ -28,12 +28,14 @@ export default class Pagination extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.pagingRef.scrollTo({
-        x: (this.props.activeIndex - this.state.currentPosition) * DOT_SIZE,
-        animated: false
-      });
-    }, 1);
+    if (this.props.isComplex) {
+      setTimeout(() => {
+        this.pagingRef.scrollTo({
+          x: (this.props.activeIndex - this.state.currentPosition) * DOT_SIZE,
+          animated: false
+        });
+      }, 1);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
