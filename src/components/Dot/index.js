@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import { DOT_SIZE } from './constants';
 
 const SIZES = {
-  small: DOT_SIZE - 5,
-  medium: DOT_SIZE - 4,
-  active: DOT_SIZE - 2,
-  default: DOT_SIZE - 3
+  small: DOT_SIZE - 10,
+  medium: DOT_SIZE - 8,
+  active: DOT_SIZE - 4,
+  default: DOT_SIZE - 6
 };
 
 const DEFAULT_COLOR = '#fff';

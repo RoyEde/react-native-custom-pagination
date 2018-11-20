@@ -22,10 +22,18 @@ export default class Pagination extends Component {
       currentPosition,
       last,
       offset,
-      forward: true,
       start,
       end
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.pagingRef.scrollTo({
+        x: (this.props.activeIndex - this.state.currentPosition) * DOT_SIZE,
+        animated: false
+      });
+    }, 1);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,10 +50,6 @@ export default class Pagination extends Component {
     if (prevProps.activeIndex !== activeIndex && isComplex) {
       this.updatePosition(prevProps.activeIndex, activeIndex);
     }
-  }
-
-  scroll(index) {
-    this.pagingRef.scrollTo({ x: index * DOT_SIZE, animated: true });
   }
 
   updatePosition(prevIndex, currentIndex) {
@@ -67,14 +71,14 @@ export default class Pagination extends Component {
     } else {
       const forward = prevIndex < currentIndex;
       const distance = currentIndex - prevIndex;
-      const newPosition = (currentPosition + distance) % offset || offset;
-      const page =
-        0 +
-        (forward && currentPosition === offset) -
-        (!forward && currentPosition === 1 && -offset);
+      const newPosition =
+        (currentPosition + distance + (!forward && offset)) % offset || offset;
+      const page = forward
+        ? Math.floor((currentPosition + distance - 1) / offset)
+        : -Math.floor((currentPosition - distance + 1) / offset);
 
-      if (page) {
-        this.scroll(currentIndex - page);
+      if (page !== 0) {
+        this.scroll(currentIndex - newPosition);
       }
       this.setState({
         currentPosition: newPosition
@@ -94,13 +98,18 @@ export default class Pagination extends Component {
       right) ||
     (index < this.props.activeIndex + 1 - this.state.currentPosition && left);
 
+  scroll(index) {
+    this.pagingRef.scrollTo({ x: index * DOT_SIZE, animated: true });
+  }
+
   renderDots = () => {
     const { activeIndex, total, isComplex } = this.props;
     const { last, offset, currentPosition } = this.state;
     const start = activeIndex <= offset;
     const end = activeIndex >= last - 2;
     const right =
-      currentPosition <= offset && activeIndex + (end ? offset + 1 : 2) <= last;
+      currentPosition <= offset &&
+      activeIndex + (end ? offset + 1 : 2) <= last - 2;
     const left =
       currentPosition >= 1 && activeIndex - (start ? offset + 1 : 2) >= 0;
     return [...Array(total)].map((_, index) => (
@@ -125,7 +134,7 @@ export default class Pagination extends Component {
             contentContainerStyle={styles.listContentContainer}
             horizontal
             ref={ref => (this.pagingRef = ref)}
-            // scrollEnabled={false}
+            scrollEnabled={false}
             showsHorizontalScrollIndicator={false}
             style={styles.complexList}
           >

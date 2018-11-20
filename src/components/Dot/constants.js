@@ -1,1 +1,1 @@
-export const DOT_SIZE = 11;
+export const DOT_SIZE = 20;

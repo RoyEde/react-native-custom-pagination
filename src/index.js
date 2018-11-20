@@ -19,10 +19,11 @@ const colors = [
   '#263D42',
   '#3C787E',
   '#3F334D',
-  '#773344'
+  '#773344',
+  '#E04B2C',
+  '#2CE04B',
+  '#4B2CE0'
 ];
-
-const colorsAlt = ['#E04B2C', '#2CE04B', '#4B2CE0'];
 
 export default class App extends Component {
   state = {
